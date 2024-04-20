@@ -92,23 +92,23 @@
             invTxtName = new TextBox();
             invClearBtn = new Button();
             reportPanel = new Panel();
-            label28 = new Label();
-            textBox18 = new TextBox();
+            rUpdateBtn = new Button();
+            rDelBtn = new Button();
+            rResult = new ComboBox();
+            rType = new ComboBox();
+            rDate = new DateTimePicker();
             label29 = new Label();
-            textBox19 = new TextBox();
             label30 = new Label();
-            textBox20 = new TextBox();
             label31 = new Label();
-            textBox21 = new TextBox();
             label32 = new Label();
-            textBox22 = new TextBox();
+            rDoctor = new TextBox();
             label33 = new Label();
-            textBox23 = new TextBox();
+            rPatient = new TextBox();
             label34 = new Label();
             label35 = new Label();
-            reportList = new ListView();
-            button6 = new Button();
-            button7 = new Button();
+            reportListView = new ListView();
+            addReportBtn = new Button();
+            clearReportBtn = new Button();
             menuPanel.SuspendLayout();
             patientPanel.SuspendLayout();
             appointmentPanel.SuspendLayout();
@@ -359,6 +359,7 @@
             PtxtAge.Name = "PtxtAge";
             PtxtAge.Size = new Size(278, 27);
             PtxtAge.TabIndex = 9;
+            PtxtAge.KeyPress += PtxtAge_KeyPress;
             // 
             // label4
             // 
@@ -778,6 +779,7 @@
             invTxtPrice.Name = "invTxtPrice";
             invTxtPrice.Size = new Size(278, 27);
             invTxtPrice.TabIndex = 45;
+            invTxtPrice.KeyPress += invTxtPrice_KeyPress;
             // 
             // label26
             // 
@@ -795,6 +797,7 @@
             invTxtQuan.Name = "invTxtQuan";
             invTxtQuan.Size = new Size(278, 27);
             invTxtQuan.TabIndex = 43;
+            invTxtQuan.KeyPress += invTxtQuan_KeyPress;
             // 
             // label27
             // 
@@ -829,135 +832,152 @@
             // 
             // reportPanel
             // 
-            reportPanel.Controls.Add(label28);
-            reportPanel.Controls.Add(textBox18);
+            reportPanel.Controls.Add(rUpdateBtn);
+            reportPanel.Controls.Add(rDelBtn);
+            reportPanel.Controls.Add(rResult);
+            reportPanel.Controls.Add(rType);
+            reportPanel.Controls.Add(rDate);
             reportPanel.Controls.Add(label29);
-            reportPanel.Controls.Add(textBox19);
             reportPanel.Controls.Add(label30);
-            reportPanel.Controls.Add(textBox20);
             reportPanel.Controls.Add(label31);
-            reportPanel.Controls.Add(textBox21);
             reportPanel.Controls.Add(label32);
-            reportPanel.Controls.Add(textBox22);
+            reportPanel.Controls.Add(rDoctor);
             reportPanel.Controls.Add(label33);
-            reportPanel.Controls.Add(textBox23);
+            reportPanel.Controls.Add(rPatient);
             reportPanel.Controls.Add(label34);
             reportPanel.Controls.Add(label35);
-            reportPanel.Controls.Add(reportList);
-            reportPanel.Controls.Add(button6);
-            reportPanel.Controls.Add(button7);
-            reportPanel.Location = new Point(281, 60);
+            reportPanel.Controls.Add(reportListView);
+            reportPanel.Controls.Add(addReportBtn);
+            reportPanel.Controls.Add(clearReportBtn);
+            reportPanel.Location = new Point(250, 60);
             reportPanel.Name = "reportPanel";
-            reportPanel.Size = new Size(922, 596);
+            reportPanel.Size = new Size(975, 596);
             reportPanel.TabIndex = 7;
             // 
-            // label28
+            // rUpdateBtn
             // 
-            label28.AutoSize = true;
-            label28.Font = new Font("Yu Gothic UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label28.Location = new Point(536, 296);
-            label28.Name = "label28";
-            label28.Size = new Size(49, 23);
-            label28.TabIndex = 35;
-            label28.Text = "Age: ";
+            rUpdateBtn.BackColor = Color.DodgerBlue;
+            rUpdateBtn.FlatStyle = FlatStyle.Flat;
+            rUpdateBtn.Font = new Font("Yu Gothic UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            rUpdateBtn.ForeColor = SystemColors.ButtonHighlight;
+            rUpdateBtn.Location = new Point(669, 406);
+            rUpdateBtn.Name = "rUpdateBtn";
+            rUpdateBtn.Size = new Size(189, 43);
+            rUpdateBtn.TabIndex = 38;
+            rUpdateBtn.Text = "Update Report";
+            rUpdateBtn.UseVisualStyleBackColor = false;
+            rUpdateBtn.Visible = false;
+            rUpdateBtn.Click += rUpdateBtn_Click;
             // 
-            // textBox18
+            // rDelBtn
             // 
-            textBox18.Location = new Point(591, 295);
-            textBox18.Name = "textBox18";
-            textBox18.Size = new Size(278, 27);
-            textBox18.TabIndex = 34;
+            rDelBtn.BackColor = Color.Red;
+            rDelBtn.FlatStyle = FlatStyle.Flat;
+            rDelBtn.Font = new Font("Yu Gothic UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            rDelBtn.ForeColor = SystemColors.ButtonHighlight;
+            rDelBtn.Location = new Point(35, 531);
+            rDelBtn.Name = "rDelBtn";
+            rDelBtn.Size = new Size(189, 43);
+            rDelBtn.TabIndex = 37;
+            rDelBtn.Text = "Delete";
+            rDelBtn.UseVisualStyleBackColor = false;
+            rDelBtn.Visible = false;
+            rDelBtn.Click += rDelBtn_Click;
+            // 
+            // rResult
+            // 
+            rResult.FormattingEnabled = true;
+            rResult.Items.AddRange(new object[] { "POSITIVE", "NEGATIVE", "FAILED", "PASS" });
+            rResult.Location = new Point(683, 318);
+            rResult.Name = "rResult";
+            rResult.Size = new Size(278, 28);
+            rResult.TabIndex = 36;
+            // 
+            // rType
+            // 
+            rType.FormattingEnabled = true;
+            rType.Items.AddRange(new object[] { "HEART SCAN", "LUNG SCAN", "HIV/AIDS TEST", "MALARIA TEST" });
+            rType.Location = new Point(683, 266);
+            rType.Name = "rType";
+            rType.Size = new Size(278, 28);
+            rType.TabIndex = 35;
+            // 
+            // rDate
+            // 
+            rDate.Location = new Point(678, 213);
+            rDate.Name = "rDate";
+            rDate.Size = new Size(279, 27);
+            rDate.TabIndex = 34;
             // 
             // label29
             // 
             label29.AutoSize = true;
             label29.Font = new Font("Yu Gothic UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label29.Location = new Point(536, 247);
+            label29.Location = new Point(613, 318);
             label29.Name = "label29";
-            label29.Size = new Size(49, 23);
+            label29.Size = new Size(60, 23);
             label29.TabIndex = 33;
-            label29.Text = "Age: ";
-            // 
-            // textBox19
-            // 
-            textBox19.Location = new Point(591, 246);
-            textBox19.Name = "textBox19";
-            textBox19.Size = new Size(278, 27);
-            textBox19.TabIndex = 32;
+            label29.Text = "Result:";
             // 
             // label30
             // 
             label30.AutoSize = true;
             label30.Font = new Font("Yu Gothic UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label30.Location = new Point(536, 198);
+            label30.Location = new Point(537, 267);
             label30.Name = "label30";
-            label30.Size = new Size(49, 23);
+            label30.Size = new Size(140, 23);
             label30.TabIndex = 31;
-            label30.Text = "Age: ";
-            // 
-            // textBox20
-            // 
-            textBox20.Location = new Point(591, 197);
-            textBox20.Name = "textBox20";
-            textBox20.Size = new Size(278, 27);
-            textBox20.TabIndex = 30;
+            label30.Text = "Report/Test Type:";
             // 
             // label31
             // 
             label31.AutoSize = true;
             label31.Font = new Font("Yu Gothic UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label31.Location = new Point(536, 147);
+            label31.Location = new Point(623, 213);
             label31.Name = "label31";
-            label31.Size = new Size(49, 23);
+            label31.Size = new Size(50, 23);
             label31.TabIndex = 29;
-            label31.Text = "Age: ";
-            // 
-            // textBox21
-            // 
-            textBox21.Location = new Point(591, 146);
-            textBox21.Name = "textBox21";
-            textBox21.Size = new Size(278, 27);
-            textBox21.TabIndex = 28;
+            label31.Text = "Date:";
             // 
             // label32
             // 
             label32.AutoSize = true;
             label32.Font = new Font("Yu Gothic UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label32.Location = new Point(536, 99);
+            label32.Location = new Point(606, 165);
             label32.Name = "label32";
-            label32.Size = new Size(49, 23);
+            label32.Size = new Size(66, 23);
             label32.TabIndex = 27;
-            label32.Text = "Age: ";
+            label32.Text = "Doctor:";
             // 
-            // textBox22
+            // rDoctor
             // 
-            textBox22.Location = new Point(591, 98);
-            textBox22.Name = "textBox22";
-            textBox22.Size = new Size(278, 27);
-            textBox22.TabIndex = 26;
+            rDoctor.Location = new Point(678, 164);
+            rDoctor.Name = "rDoctor";
+            rDoctor.Size = new Size(278, 27);
+            rDoctor.TabIndex = 26;
             // 
             // label33
             // 
             label33.AutoSize = true;
             label33.Font = new Font("Yu Gothic UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label33.Location = new Point(490, 49);
+            label33.Location = new Point(599, 118);
             label33.Name = "label33";
-            label33.Size = new Size(95, 23);
+            label33.Size = new Size(68, 23);
             label33.TabIndex = 25;
-            label33.Text = "Full Name: ";
+            label33.Text = "Patient:";
             // 
-            // textBox23
+            // rPatient
             // 
-            textBox23.Location = new Point(591, 48);
-            textBox23.Name = "textBox23";
-            textBox23.Size = new Size(278, 27);
-            textBox23.TabIndex = 24;
+            rPatient.Location = new Point(678, 114);
+            rPatient.Name = "rPatient";
+            rPatient.Size = new Size(278, 27);
+            rPatient.TabIndex = 24;
             // 
             // label34
             // 
             label34.AutoSize = true;
             label34.Font = new Font("Yu Gothic UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label34.Location = new Point(641, 7);
+            label34.Location = new Point(728, 73);
             label34.Name = "label34";
             label34.Size = new Size(104, 23);
             label34.TabIndex = 23;
@@ -967,45 +987,50 @@
             // 
             label35.AutoSize = true;
             label35.Font = new Font("Yu Gothic UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label35.Location = new Point(171, 4);
+            label35.Location = new Point(227, 7);
             label35.Name = "label35";
             label35.Size = new Size(98, 23);
             label35.TabIndex = 22;
             label35.Text = "Reports List";
             // 
-            // reportList
+            // reportListView
             // 
-            reportList.Location = new Point(22, 34);
-            reportList.Name = "reportList";
-            reportList.Size = new Size(428, 491);
-            reportList.TabIndex = 21;
-            reportList.UseCompatibleStateImageBehavior = false;
+            reportListView.FullRowSelect = true;
+            reportListView.GridLines = true;
+            reportListView.Location = new Point(22, 39);
+            reportListView.Name = "reportListView";
+            reportListView.Size = new Size(513, 465);
+            reportListView.TabIndex = 21;
+            reportListView.UseCompatibleStateImageBehavior = false;
+            reportListView.SelectedIndexChanged += reportListView_SelectedIndexChanged;
             // 
-            // button6
+            // addReportBtn
             // 
-            button6.BackColor = Color.Green;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Yu Gothic UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button6.ForeColor = SystemColors.ButtonHighlight;
-            button6.Location = new Point(516, 537);
-            button6.Name = "button6";
-            button6.Size = new Size(189, 43);
-            button6.TabIndex = 20;
-            button6.Text = "Add Patient";
-            button6.UseVisualStyleBackColor = false;
+            addReportBtn.BackColor = Color.Green;
+            addReportBtn.FlatStyle = FlatStyle.Flat;
+            addReportBtn.Font = new Font("Yu Gothic UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            addReportBtn.ForeColor = SystemColors.ButtonHighlight;
+            addReportBtn.Location = new Point(567, 526);
+            addReportBtn.Name = "addReportBtn";
+            addReportBtn.Size = new Size(189, 43);
+            addReportBtn.TabIndex = 20;
+            addReportBtn.Text = "Add Report";
+            addReportBtn.UseVisualStyleBackColor = false;
+            addReportBtn.Click += addReportBtn_Click;
             // 
-            // button7
+            // clearReportBtn
             // 
-            button7.BackColor = Color.Red;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Font = new Font("Yu Gothic UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button7.ForeColor = SystemColors.ButtonHighlight;
-            button7.Location = new Point(711, 537);
-            button7.Name = "button7";
-            button7.Size = new Size(189, 43);
-            button7.TabIndex = 19;
-            button7.Text = "Clear";
-            button7.UseVisualStyleBackColor = false;
+            clearReportBtn.BackColor = Color.Red;
+            clearReportBtn.FlatStyle = FlatStyle.Flat;
+            clearReportBtn.Font = new Font("Yu Gothic UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            clearReportBtn.ForeColor = SystemColors.ButtonHighlight;
+            clearReportBtn.Location = new Point(762, 526);
+            clearReportBtn.Name = "clearReportBtn";
+            clearReportBtn.Size = new Size(189, 43);
+            clearReportBtn.TabIndex = 19;
+            clearReportBtn.Text = "Clear";
+            clearReportBtn.UseVisualStyleBackColor = false;
+            clearReportBtn.Click += clearReportBtn_Click;
             // 
             // Homepage
             // 
@@ -1015,10 +1040,10 @@
             ControlBox = false;
             Controls.Add(menuPanel);
             Controls.Add(label1);
+            Controls.Add(reportPanel);
             Controls.Add(patientPanel);
             Controls.Add(invPanel);
             Controls.Add(appointmentPanel);
-            Controls.Add(reportPanel);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Homepage";
             ShowIcon = false;
@@ -1093,27 +1118,25 @@
         private TextBox invTxtQuan;
         private Label label27;
         private TextBox invTxtName;
+        private TextBox rPatient;
+        private TextBox rDoctor;
         private ListView listView3;
-        private Button button4;
+        private Button rUpdateBtn;
         private Button invClearBtn;
         private Panel reportPanel;
-        private Label label28;
-        private TextBox textBox18;
         private Label label29;
         private TextBox textBox19;
         private Label label30;
-        private TextBox textBox20;
         private Label label31;
-        private TextBox textBox21;
         private Label label32;
         private TextBox textBox22;
         private Label label33;
         private TextBox textBox23;
         private Label label34;
         private Label label35;
-        private ListView reportList;
-        private Button button6;
-        private Button button7;
+        private ListView reportListView;
+        private Button addReportBtn;
+        private Button clearReportBtn;
         private ListView patientListView;
         private ComboBox Pgender;
         private DateTimePicker PtxtDob;
@@ -1129,5 +1152,9 @@
         private Button IdelBtn;
         private ListView invListView;
         private Button invAddBtn;
+        private DateTimePicker rDate;
+        private ComboBox rResult;
+        private ComboBox rType;
+        private Button rDelBtn;
     }
 }

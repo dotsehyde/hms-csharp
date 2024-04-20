@@ -79,9 +79,12 @@ namespace HMS
             reportPanel.Visible = false;
             Astatus.Text = "PENDING";
             Pgender.Text = "MALE";
+            rResult.Text = "POSITIVE";
+            rType.Text = "HEART SCAN";
             GetPatientData();
             GetAppointmentData();
             GetInventoryData();
+            GetReportData();
         }
 
         private void GetPatientData()
@@ -197,6 +200,44 @@ namespace HMS
 
         }
 
+        private void GetReportData()
+        {
+            try
+            {
+                reportListView.View = View.Details;
+                reportListView.GridLines = true;
+                reportListView.Columns.Add("ID", 50);
+                reportListView.Columns.Add("Patient", 120);
+                reportListView.Columns.Add("Doctor", 120);
+                reportListView.Columns.Add("Date", 100);
+                reportListView.Columns.Add("Type", 120);
+                reportListView.Columns.Add("Result", 100);
+
+                //db CONNECTION
+                SqlConnection conn = new SqlConnection("Data Source=DESKTOP-SI0VT1I;Initial Catalog=HMS;Integrated Security=True;Encrypt=False");
+                conn.Open();
+                SqlCommand comm = new SqlCommand("select * from Report", conn);
+                SqlDataReader da;
+                da = comm.ExecuteReader();
+
+                while (da.Read())
+                {
+                    var item1 = reportListView.Items.Add(da[0].ToString());
+                    item1.SubItems.Add(da[1].ToString());
+                    item1.SubItems.Add(da[3].ToString());
+                    item1.SubItems.Add(DateTime.Parse(da[2].ToString()).ToString("dd/MMM/yyy"));
+                    item1.SubItems.Add(da[4].ToString());
+                    item1.SubItems.Add(da[5].ToString());
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Occured!");
+            }
+
+        }
+
         private void invPanel_Paint(object sender, PaintEventArgs e)
         {
 
@@ -207,6 +248,8 @@ namespace HMS
             TogglePanel(reportPanel);
         }
 
+        //PATIENT FUNCTIONS
+        private String patientSelId = "";
         private void addPatientBtn_Click(object sender, EventArgs e)
         {
             try
@@ -255,7 +298,6 @@ namespace HMS
         {
             PtxtAddress.Text = PtxtFullName.Text = PtxtAge.Text = PtxtPhone.Text = "";
         }
-        private String patientSelId = "";
         private void patientListView_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -284,7 +326,6 @@ namespace HMS
                 patientSelId = "";
             }
         }
-
 
         private void PdelBtn_Click(object sender, EventArgs e)
         {
@@ -315,7 +356,6 @@ namespace HMS
                 MessageBox.Show(ex.Message, "Error Occured!");
             }
         }
-
 
         private void PupdateBtn_Click(object sender, EventArgs e)
         {
@@ -361,6 +401,7 @@ namespace HMS
             }
         }
 
+        //APPOINTMENT FUNCTIONS
         private String appointmentSelId = "";
         private void button2_Click(object sender, EventArgs e)
         {
@@ -509,6 +550,7 @@ namespace HMS
             }
         }
 
+        // INVENTORY FUNCTIONS
         private String invSelId = "";
         private void invAddBtn_Click(object sender, EventArgs e)
         {
@@ -647,5 +689,183 @@ namespace HMS
                 MessageBox.Show(ex.Message, "Error Occured!");
             }
         }
+
+        //REPORT FUNCTIONS
+        private String reportSelId = "";
+        private void addReportBtn_Click(object sender, EventArgs e)
+        {
+            //Add inventory
+            try
+            {
+                String patient = rPatient.Text;
+                String doctor = rDoctor.Text;
+                String rtype = rType.Text;
+                String date = rDate.Text;
+                String result = rResult.Text;
+
+                if (patient == "" || doctor == "" || rtype == "" || date == "" || result == "")
+                {
+                    MessageBox.Show("All Fields are required.", "Error!");
+                    return;
+                }
+
+                SqlConnection conn = new SqlConnection("Data Source=DESKTOP-SI0VT1I;Initial Catalog=HMS;Integrated Security=True;Encrypt=False");
+                conn.Open();
+                SqlCommand comm = new SqlCommand("insert into Report (PatientName,Date,DoctorName,ReportType,Results) values (@PatientName,@Date,@DoctorName,@ReportType,@Results)", conn);
+                comm.Parameters.AddWithValue("@PatientName", patient);
+                comm.Parameters.AddWithValue("@Date", date);
+                comm.Parameters.AddWithValue("@DoctorName", doctor);
+                comm.Parameters.AddWithValue("@Results", result);
+                comm.Parameters.AddWithValue("@ReportType", rtype);
+                comm.ExecuteNonQuery();
+                MessageBox.Show("Report added successfully");
+                reportListView.Clear();
+                GetReportData();
+                rPatient.Text = rDoctor.Text = rDate.Text = "";
+                rResult.Text = "POSITIVE";
+                rType.Text = "HEART SCAN";
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Occured!");
+            }
+        }
+        private void clearReportBtn_Click(object sender, EventArgs e)
+        {
+            rPatient.Text = rDoctor.Text = rDate.Text = "";
+            rResult.Text = "POSITIVE";
+            rType.Text = "HEART SCAN";
+
+        }
+
+        private void rDelBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this report?", "Delete Report", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (result == DialogResult.Yes)
+                {
+
+                    SqlConnection conn = new SqlConnection("Data Source=DESKTOP-SI0VT1I;Initial Catalog=HMS;Integrated Security=True;Encrypt=False");
+                    conn.Open();
+                    SqlCommand comm = new SqlCommand("delete from Report where Id=@Id", conn);
+                    comm.Parameters.AddWithValue("@Id", reportSelId);
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("Report Deleted Successfully");
+                    reportListView.Clear();
+                    GetReportData();
+                    conn.Close();
+                    rUpdateBtn.Visible = false;
+                    rDelBtn.Visible = false;
+                    addReportBtn.Visible = true;
+                    reportSelId = "";
+                    rPatient.Text = rDoctor.Text = rDate.Text = "";
+                    rResult.Text = "POSITIVE";
+                    rType.Text = "HEART SCAN";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Occured!");
+            }
+        }
+
+        private void rUpdateBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                String patient = rPatient.Text;
+                String doctor = rDoctor.Text;
+                String rtype = rType.Text;
+                String date = rDate.Text;
+                String result = rResult.Text;
+
+                if (patient == "" || doctor == "" || rtype == "" || date == "" || result == "")
+                {
+                    MessageBox.Show("All Fields are required.", "Error!");
+                    return;
+                }
+
+                SqlConnection conn = new SqlConnection("Data Source=DESKTOP-SI0VT1I;Initial Catalog=HMS;Integrated Security=True;Encrypt=False");
+                conn.Open();
+                SqlCommand comm = new SqlCommand("update Report SET PatientName=@PatientName,Date=@Date,DoctorName=@DoctorName,Results=@Results,ReportType=@ReportType where Id=@Id", conn);
+                comm.Parameters.AddWithValue("@PatientName", patient);
+                comm.Parameters.AddWithValue("@Date", date);
+                comm.Parameters.AddWithValue("@DoctorName", doctor);
+                comm.Parameters.AddWithValue("@Results", result);
+                comm.Parameters.AddWithValue("@ReportType", rtype);
+                comm.Parameters.AddWithValue("@Id", reportSelId);
+                comm.ExecuteNonQuery();
+                MessageBox.Show("Report updated successfully");
+                reportListView.Clear();
+                GetReportData();
+                conn.Close();
+                rUpdateBtn.Visible = false;
+                rDelBtn.Visible = false;
+                addReportBtn.Visible = true;
+                reportSelId = "";
+                rPatient.Text = rDoctor.Text = rDate.Text = "";
+                rResult.Text = "POSITIVE";
+                rType.Text = "HEART SCAN";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Occured!");
+            }
+        }
+        private void reportListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (reportListView.SelectedItems.Count > 0)
+            {
+                reportSelId = reportListView.SelectedItems[0].Text;
+                rUpdateBtn.Visible = !false;
+                rDelBtn.Visible = !false;
+                addReportBtn.Visible = !true;
+
+                var sItems = reportListView.SelectedItems[0].SubItems;
+                rPatient.Text = sItems[1].Text;
+                rDoctor.Text = sItems[2].Text;
+                rDate.Value = DateTime.Parse(sItems[3].Text);
+                rType.Text = sItems[4].Text;
+                rResult.Text = sItems[5].Text;
+            }
+
+
+            else
+            {
+                rUpdateBtn.Visible = false;
+                rDelBtn.Visible = false;
+                addReportBtn.Visible = true;
+                reportSelId = "";
+            }
+        }
+        //COMMON VALIDATIONS
+        private void PtxtAge_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void invTxtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void invTxtQuan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+      
     }
 }

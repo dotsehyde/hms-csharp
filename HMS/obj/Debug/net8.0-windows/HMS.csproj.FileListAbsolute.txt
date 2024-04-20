@@ -18,7 +18,6 @@ C:\Users\User\Desktop\DotNet\HMS\HMS\obj\Debug\net8.0-windows\HMS.Homepage.resou
 C:\Users\User\Desktop\DotNet\HMS\HMS\obj\Debug\net8.0-windows\HMS.Properties.Resources.resources
 C:\Users\User\Desktop\DotNet\HMS\HMS\obj\Debug\net8.0-windows\HMS..resources
 C:\Users\User\Desktop\DotNet\HMS\HMS\obj\Debug\net8.0-windows\HMS.RegisterForm.resources
-C:\Users\User\Desktop\DotNet\HMS\HMS\obj\Debug\net8.0-windows\HMS.MenuItem.resources
 C:\Users\User\Desktop\DotNet\HMS\HMS\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
 C:\Users\User\Desktop\DotNet\HMS\HMS\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
 C:\Users\User\Desktop\DotNet\HMS\HMS\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
@@ -27,3 +26,4 @@ C:\Users\User\Desktop\DotNet\HMS\HMS\bin\Debug\net8.0-windows\runtimes\unix\lib\
 C:\Users\User\Desktop\DotNet\HMS\HMS\bin\Debug\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\User\Desktop\DotNet\HMS\HMS\obj\Debug\net8.0-windows\HMS.csproj.AssemblyReference.cache
 C:\Users\User\Desktop\DotNet\HMS\HMS\obj\Debug\net8.0-windows\HMS.csproj.Up2Date
+C:\Users\User\Desktop\DotNet\HMS\HMS\obj\Debug\net8.0-windows\HMS.sourcelink.json
