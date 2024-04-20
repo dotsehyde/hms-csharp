@@ -844,7 +844,7 @@ namespace HMS
         //COMMON VALIDATIONS
         private void PtxtAge_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsNumber(e.KeyChar))
+            if (!char.IsNumber(e.KeyChar) &&(!char.IsControl(e.KeyChar)))
             {
                 e.Handled = true;
             }
@@ -852,7 +852,7 @@ namespace HMS
 
         private void invTxtPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsNumber(e.KeyChar))
+            if (!char.IsNumber(e.KeyChar) && (!char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -860,7 +860,7 @@ namespace HMS
 
         private void invTxtQuan_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsNumber(e.KeyChar))
+            if (!char.IsNumber(e.KeyChar) && (!char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
