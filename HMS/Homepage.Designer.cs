@@ -30,6 +30,7 @@
         {
             label1 = new Label();
             menuPanel = new Panel();
+            btnDash = new Button();
             button1 = new Button();
             invBtn = new Button();
             appointmentBtn = new Button();
@@ -109,11 +110,30 @@
             reportListView = new ListView();
             addReportBtn = new Button();
             clearReportBtn = new Button();
+            dashPnl = new Panel();
+            label36 = new Label();
+            panel5 = new Panel();
+            lblRCount = new Label();
+            label28 = new Label();
+            panel4 = new Panel();
+            lblICount = new Label();
+            label23 = new Label();
+            panel3 = new Panel();
+            lblACount = new Label();
+            label22 = new Label();
+            panel2 = new Panel();
+            lblPCount = new Label();
+            label10 = new Label();
             menuPanel.SuspendLayout();
             patientPanel.SuspendLayout();
             appointmentPanel.SuspendLayout();
             invPanel.SuspendLayout();
             reportPanel.SuspendLayout();
+            dashPnl.SuspendLayout();
+            panel5.SuspendLayout();
+            panel4.SuspendLayout();
+            panel3.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -130,6 +150,7 @@
             // 
             menuPanel.BackColor = Color.WhiteSmoke;
             menuPanel.BorderStyle = BorderStyle.FixedSingle;
+            menuPanel.Controls.Add(btnDash);
             menuPanel.Controls.Add(button1);
             menuPanel.Controls.Add(invBtn);
             menuPanel.Controls.Add(appointmentBtn);
@@ -140,11 +161,23 @@
             menuPanel.Size = new Size(219, 600);
             menuPanel.TabIndex = 1;
             // 
+            // btnDash
+            // 
+            btnDash.FlatStyle = FlatStyle.System;
+            btnDash.Font = new Font("Yu Gothic UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDash.Location = new Point(15, 12);
+            btnDash.Name = "btnDash";
+            btnDash.Size = new Size(189, 43);
+            btnDash.TabIndex = 5;
+            btnDash.Text = "Dashboard";
+            btnDash.UseVisualStyleBackColor = true;
+            btnDash.Click += btnDash_Click;
+            // 
             // button1
             // 
             button1.FlatStyle = FlatStyle.System;
             button1.Font = new Font("Yu Gothic UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(15, 205);
+            button1.Location = new Point(15, 253);
             button1.Name = "button1";
             button1.Size = new Size(189, 43);
             button1.TabIndex = 4;
@@ -156,7 +189,7 @@
             // 
             invBtn.FlatStyle = FlatStyle.System;
             invBtn.Font = new Font("Yu Gothic UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            invBtn.Location = new Point(15, 141);
+            invBtn.Location = new Point(15, 189);
             invBtn.Name = "invBtn";
             invBtn.Size = new Size(189, 43);
             invBtn.TabIndex = 3;
@@ -168,7 +201,7 @@
             // 
             appointmentBtn.FlatStyle = FlatStyle.System;
             appointmentBtn.Font = new Font("Yu Gothic UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            appointmentBtn.Location = new Point(15, 80);
+            appointmentBtn.Location = new Point(15, 128);
             appointmentBtn.Name = "appointmentBtn";
             appointmentBtn.Size = new Size(189, 43);
             appointmentBtn.TabIndex = 2;
@@ -194,7 +227,7 @@
             // 
             patientBtn.FlatStyle = FlatStyle.System;
             patientBtn.Font = new Font("Yu Gothic UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            patientBtn.Location = new Point(15, 21);
+            patientBtn.Location = new Point(15, 69);
             patientBtn.Name = "patientBtn";
             patientBtn.Size = new Size(189, 43);
             patientBtn.TabIndex = 0;
@@ -1032,12 +1065,163 @@
             clearReportBtn.UseVisualStyleBackColor = false;
             clearReportBtn.Click += clearReportBtn_Click;
             // 
+            // dashPnl
+            // 
+            dashPnl.Controls.Add(label36);
+            dashPnl.Controls.Add(panel5);
+            dashPnl.Controls.Add(panel4);
+            dashPnl.Controls.Add(panel3);
+            dashPnl.Controls.Add(panel2);
+            dashPnl.Location = new Point(250, 43);
+            dashPnl.Name = "dashPnl";
+            dashPnl.Size = new Size(975, 626);
+            dashPnl.TabIndex = 8;
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label36.Location = new Point(402, 51);
+            label36.Name = "label36";
+            label36.Size = new Size(171, 41);
+            label36.TabIndex = 3;
+            label36.Text = "Dashboard";
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.White;
+            panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Controls.Add(lblRCount);
+            panel5.Controls.Add(label28);
+            panel5.Location = new Point(598, 346);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(248, 124);
+            panel5.TabIndex = 3;
+            // 
+            // lblRCount
+            // 
+            lblRCount.AutoSize = true;
+            lblRCount.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblRCount.Location = new Point(63, 19);
+            lblRCount.Name = "lblRCount";
+            lblRCount.Size = new Size(121, 41);
+            lblRCount.TabIndex = 4;
+            lblRCount.Text = "label36";
+            lblRCount.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label28.Location = new Point(70, 73);
+            label28.Name = "label28";
+            label28.Size = new Size(92, 31);
+            label28.TabIndex = 3;
+            label28.Text = "Reports";
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.White;
+            panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(lblICount);
+            panel4.Controls.Add(label23);
+            panel4.Location = new Point(127, 349);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(248, 124);
+            panel4.TabIndex = 2;
+            // 
+            // lblICount
+            // 
+            lblICount.AutoSize = true;
+            lblICount.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblICount.Location = new Point(63, 16);
+            lblICount.Name = "lblICount";
+            lblICount.Size = new Size(121, 41);
+            lblICount.TabIndex = 3;
+            lblICount.Text = "label36";
+            lblICount.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label23.Location = new Point(60, 73);
+            label23.Name = "label23";
+            label23.Size = new Size(109, 31);
+            label23.TabIndex = 2;
+            label23.Text = "Inventory";
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.White;
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(lblACount);
+            panel3.Controls.Add(label22);
+            panel3.Location = new Point(600, 156);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(248, 124);
+            panel3.TabIndex = 1;
+            // 
+            // lblACount
+            // 
+            lblACount.AutoSize = true;
+            lblACount.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblACount.Location = new Point(46, 18);
+            lblACount.Name = "lblACount";
+            lblACount.Size = new Size(121, 41);
+            lblACount.TabIndex = 2;
+            lblACount.Text = "label36";
+            lblACount.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label22.Location = new Point(43, 81);
+            label22.Name = "label22";
+            label22.Size = new Size(160, 31);
+            label22.TabIndex = 1;
+            label22.Text = "Appointments";
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.White;
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(lblPCount);
+            panel2.Controls.Add(label10);
+            panel2.Location = new Point(127, 153);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(248, 124);
+            panel2.TabIndex = 0;
+            // 
+            // lblPCount
+            // 
+            lblPCount.AutoSize = true;
+            lblPCount.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPCount.Location = new Point(63, 21);
+            lblPCount.Name = "lblPCount";
+            lblPCount.Size = new Size(121, 41);
+            lblPCount.TabIndex = 1;
+            lblPCount.Text = "label36";
+            lblPCount.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(72, 78);
+            label10.Name = "label10";
+            label10.Size = new Size(95, 31);
+            label10.TabIndex = 0;
+            label10.Text = "Patients";
+            // 
             // Homepage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1237, 695);
             ControlBox = false;
+            Controls.Add(dashPnl);
             Controls.Add(menuPanel);
             Controls.Add(label1);
             Controls.Add(reportPanel);
@@ -1058,6 +1242,16 @@
             invPanel.PerformLayout();
             reportPanel.ResumeLayout(false);
             reportPanel.PerformLayout();
+            dashPnl.ResumeLayout(false);
+            dashPnl.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1156,5 +1350,18 @@
         private ComboBox rResult;
         private ComboBox rType;
         private Button rDelBtn;
+        private Panel dashPnl;
+        private Panel panel5;
+        private Panel panel4;
+        private Panel panel3;
+        private Panel panel2;
+        private Label lblRCount;
+        private Label label28;
+        private Label lblICount;
+        private Label lblACount;
+        private Label lblPCount;
+        private Label label10;
+        private Button btnDash;
+        private Label label36;
     }
 }

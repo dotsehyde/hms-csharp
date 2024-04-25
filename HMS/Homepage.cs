@@ -50,6 +50,11 @@ namespace HMS
             TogglePanel(appointmentPanel);
         }
 
+        private void btnDash_Click(object sender, EventArgs e)
+        {
+            TogglePanel(dashPnl);
+        }
+
         // Handler for the inventory button click
         private void invBtn_Click(object sender, EventArgs e)
         {
@@ -77,15 +82,50 @@ namespace HMS
             patientPanel.Visible = false;
             invPanel.Visible = false;
             reportPanel.Visible = false;
+            dashPnl.Visible = true;
             Astatus.Text = "PENDING";
             Pgender.Text = "MALE";
             rResult.Text = "POSITIVE";
             rType.Text = "HEART SCAN";
+            GetDashStatsData();
             GetPatientData();
             GetAppointmentData();
             GetInventoryData();
             GetReportData();
+
         }
+
+        private void GetDashStatsData()
+        {
+            try
+            {
+              
+                //db CONNECTION
+                SqlConnection conn = new SqlConnection("Data Source=DESKTOP-SI0VT1I;Initial Catalog=HMS;Integrated Security=True;Encrypt=False");
+                conn.Open();
+                SqlCommand pComm = new SqlCommand("SELECT COUNT(*) FROM Patient", conn);
+                SqlCommand aComm = new SqlCommand("SELECT COUNT(*) FROM Appointment", conn);
+                SqlCommand iComm = new SqlCommand("SELECT COUNT(*) FROM Inventory", conn);
+                SqlCommand rComm = new SqlCommand("SELECT COUNT(*) FROM Report", conn);
+
+                int patientCount = (int)pComm.ExecuteScalar();
+                int appointmentCount = (int)aComm.ExecuteScalar();
+                int inventoryCount = (int)iComm.ExecuteScalar();
+                int reportCount = (int)rComm.ExecuteScalar();
+
+                lblPCount.Text = patientCount.ToString();
+                lblACount.Text = appointmentCount.ToString();
+                lblICount.Text = inventoryCount.ToString();
+                lblRCount.Text = reportCount.ToString();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Occured!");
+            }
+
+        }
+
 
         private void GetPatientData()
         {
@@ -844,7 +884,7 @@ namespace HMS
         //COMMON VALIDATIONS
         private void PtxtAge_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsNumber(e.KeyChar) &&(!char.IsControl(e.KeyChar)))
+            if (!char.IsNumber(e.KeyChar) && (!char.IsControl(e.KeyChar)))
             {
                 e.Handled = true;
             }
@@ -866,6 +906,6 @@ namespace HMS
             }
         }
 
-      
+        
     }
 }
