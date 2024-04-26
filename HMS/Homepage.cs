@@ -320,6 +320,7 @@ namespace HMS
                 MessageBox.Show("Patient added successfully");
                 patientListView.Clear();
                 GetPatientData();
+                GetDashStatsData();
                 PtxtAddress.Text = PtxtFullName.Text = PtxtAge.Text = PtxtPhone.Text = "";
                 conn.Close();
             }
@@ -383,6 +384,7 @@ namespace HMS
                     MessageBox.Show("Patient Deleted Successfully");
                     patientListView.Clear();
                     GetPatientData();
+                    GetDashStatsData();
                     conn.Close();
                     PdelBtn.Visible = false;
                     PupdateBtn.Visible = false;
@@ -428,6 +430,7 @@ namespace HMS
                 MessageBox.Show("Patient updated successfully");
                 patientListView.Clear();
                 GetPatientData();
+                GetDashStatsData();
                 PtxtAddress.Text = PtxtFullName.Text = PtxtAge.Text = PtxtPhone.Text = "";
                 conn.Close();
                 PdelBtn.Visible = false;
@@ -472,6 +475,7 @@ namespace HMS
                 MessageBox.Show("Appointment added successfully");
                 appListView.Clear();
                 GetAppointmentData();
+                GetDashStatsData();
                 AtxtPName.Text = AtxtDName.Text = Atime.Text = Adate.Text = "";
                 Astatus.Text = "PENDING";
                 conn.Close();
@@ -533,6 +537,7 @@ namespace HMS
                     MessageBox.Show("Appointment Deleted Successfully");
                     appListView.Clear();
                     GetAppointmentData();
+                    GetDashStatsData();
                     conn.Close();
                     AdelBtn.Visible = false;
                     AupdateBtn.Visible = false;
@@ -576,6 +581,7 @@ namespace HMS
                 MessageBox.Show("Appointment updated successfully");
                 appListView.Clear();
                 GetAppointmentData();
+                GetDashStatsData();
                 AtxtPName.Text = AtxtDName.Text = Atime.Text = Adate.Text = "";
                 Astatus.Text = "PENDING";
                 AdelBtn.Visible = false;
@@ -619,6 +625,7 @@ namespace HMS
                 MessageBox.Show("Inventory added successfully");
                 invListView.Clear();
                 GetInventoryData();
+                GetDashStatsData();
                 invTxtName.Text = invTxtPrice.Text = invTxtQuan.Text = invTxtSup.Text = "";
                 conn.Close();
             }
@@ -675,6 +682,7 @@ namespace HMS
                     MessageBox.Show("Inventory Deleted Successfully");
                     invListView.Clear();
                     GetInventoryData();
+                    GetDashStatsData();
                     conn.Close();
                     IdelBtn.Visible = false;
                     IupdateBtn.Visible = false;
@@ -717,6 +725,7 @@ namespace HMS
                 MessageBox.Show("Inventory updated successfully");
                 invListView.Clear();
                 GetInventoryData();
+                GetDashStatsData();
                 IdelBtn.Visible = false;
                 IupdateBtn.Visible = false;
                 invAddBtn.Visible = true;
@@ -761,6 +770,7 @@ namespace HMS
                 MessageBox.Show("Report added successfully");
                 reportListView.Clear();
                 GetReportData();
+                GetDashStatsData();
                 rPatient.Text = rDoctor.Text = rDate.Text = "";
                 rResult.Text = "POSITIVE";
                 rType.Text = "HEART SCAN";
@@ -795,6 +805,7 @@ namespace HMS
                     MessageBox.Show("Report Deleted Successfully");
                     reportListView.Clear();
                     GetReportData();
+                    GetDashStatsData();
                     conn.Close();
                     rUpdateBtn.Visible = false;
                     rDelBtn.Visible = false;
@@ -841,6 +852,7 @@ namespace HMS
                 MessageBox.Show("Report updated successfully");
                 reportListView.Clear();
                 GetReportData();
+                GetDashStatsData();
                 conn.Close();
                 rUpdateBtn.Visible = false;
                 rDelBtn.Visible = false;
