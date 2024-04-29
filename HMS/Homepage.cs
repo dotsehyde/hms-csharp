@@ -99,7 +99,7 @@ namespace HMS
         {
             try
             {
-              
+
                 //db CONNECTION
                 SqlConnection conn = new SqlConnection("Data Source=DESKTOP-SI0VT1I;Initial Catalog=HMS;Integrated Security=True;Encrypt=False");
                 conn.Open();
@@ -918,6 +918,6 @@ namespace HMS
             }
         }
 
-        
+      
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Homepage));
             label1 = new Label();
             menuPanel = new Panel();
             btnDash = new Button();
@@ -111,6 +112,7 @@
             addReportBtn = new Button();
             clearReportBtn = new Button();
             dashPnl = new Panel();
+            pictureBox1 = new PictureBox();
             label36 = new Label();
             panel5 = new Panel();
             lblRCount = new Label();
@@ -130,6 +132,7 @@
             invPanel.SuspendLayout();
             reportPanel.SuspendLayout();
             dashPnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
@@ -1067,6 +1070,7 @@
             // 
             // dashPnl
             // 
+            dashPnl.Controls.Add(pictureBox1);
             dashPnl.Controls.Add(label36);
             dashPnl.Controls.Add(panel5);
             dashPnl.Controls.Add(panel4);
@@ -1077,11 +1081,21 @@
             dashPnl.Size = new Size(975, 626);
             dashPnl.TabIndex = 8;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(19, 16);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(932, 261);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
             // label36
             // 
             label36.AutoSize = true;
             label36.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label36.Location = new Point(402, 51);
+            label36.Location = new Point(402, 347);
             label36.Name = "label36";
             label36.Size = new Size(171, 41);
             label36.TabIndex = 3;
@@ -1093,16 +1107,16 @@
             panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(lblRCount);
             panel5.Controls.Add(label28);
-            panel5.Location = new Point(598, 346);
+            panel5.Location = new Point(751, 466);
             panel5.Name = "panel5";
-            panel5.Size = new Size(248, 124);
+            panel5.Size = new Size(200, 111);
             panel5.TabIndex = 3;
             // 
             // lblRCount
             // 
             lblRCount.AutoSize = true;
             lblRCount.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRCount.Location = new Point(63, 19);
+            lblRCount.Location = new Point(39, 12);
             lblRCount.Name = "lblRCount";
             lblRCount.Size = new Size(121, 41);
             lblRCount.TabIndex = 4;
@@ -1113,7 +1127,7 @@
             // 
             label28.AutoSize = true;
             label28.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label28.Location = new Point(70, 73);
+            label28.Location = new Point(46, 66);
             label28.Name = "label28";
             label28.Size = new Size(92, 31);
             label28.TabIndex = 3;
@@ -1125,16 +1139,16 @@
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(lblICount);
             panel4.Controls.Add(label23);
-            panel4.Location = new Point(127, 349);
+            panel4.Location = new Point(497, 466);
             panel4.Name = "panel4";
-            panel4.Size = new Size(248, 124);
+            panel4.Size = new Size(199, 111);
             panel4.TabIndex = 2;
             // 
             // lblICount
             // 
             lblICount.AutoSize = true;
             lblICount.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblICount.Location = new Point(63, 16);
+            lblICount.Location = new Point(44, 13);
             lblICount.Name = "lblICount";
             lblICount.Size = new Size(121, 41);
             lblICount.TabIndex = 3;
@@ -1145,7 +1159,7 @@
             // 
             label23.AutoSize = true;
             label23.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label23.Location = new Point(60, 73);
+            label23.Location = new Point(41, 70);
             label23.Name = "label23";
             label23.Size = new Size(109, 31);
             label23.TabIndex = 2;
@@ -1157,16 +1171,16 @@
             panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(lblACount);
             panel3.Controls.Add(label22);
-            panel3.Location = new Point(600, 156);
+            panel3.Location = new Point(259, 468);
             panel3.Name = "panel3";
-            panel3.Size = new Size(248, 124);
+            panel3.Size = new Size(198, 106);
             panel3.TabIndex = 1;
             // 
             // lblACount
             // 
             lblACount.AutoSize = true;
             lblACount.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblACount.Location = new Point(46, 18);
+            lblACount.Location = new Point(21, 5);
             lblACount.Name = "lblACount";
             lblACount.Size = new Size(121, 41);
             lblACount.TabIndex = 2;
@@ -1177,7 +1191,7 @@
             // 
             label22.AutoSize = true;
             label22.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label22.Location = new Point(43, 81);
+            label22.Location = new Point(18, 68);
             label22.Name = "label22";
             label22.Size = new Size(160, 31);
             label22.TabIndex = 1;
@@ -1189,16 +1203,16 @@
             panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(lblPCount);
             panel2.Controls.Add(label10);
-            panel2.Location = new Point(127, 153);
+            panel2.Location = new Point(21, 468);
             panel2.Name = "panel2";
-            panel2.Size = new Size(248, 124);
+            panel2.Size = new Size(199, 104);
             panel2.TabIndex = 0;
             // 
             // lblPCount
             // 
             lblPCount.AutoSize = true;
             lblPCount.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPCount.Location = new Point(63, 21);
+            lblPCount.Location = new Point(38, 7);
             lblPCount.Name = "lblPCount";
             lblPCount.Size = new Size(121, 41);
             lblPCount.TabIndex = 1;
@@ -1209,7 +1223,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(72, 78);
+            label10.Location = new Point(47, 64);
             label10.Name = "label10";
             label10.Size = new Size(95, 31);
             label10.TabIndex = 0;
@@ -1244,6 +1258,7 @@
             reportPanel.PerformLayout();
             dashPnl.ResumeLayout(false);
             dashPnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel4.ResumeLayout(false);
@@ -1363,5 +1378,6 @@
         private Label label10;
         private Button btnDash;
         private Label label36;
+        private PictureBox pictureBox1;
     }
 }
